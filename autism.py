@@ -16,11 +16,10 @@ model = data['model']
 x = data['x']
 
 def show_page():
-    container = st.container(border=True)
-    container.write("<h1 style='text-align: center; color: blue;'>مدل تشخیص اوتیسم خفیف در کودکان</h1>", unsafe_allow_html=True)
-    container.write("<h2 style='text-align: center; color: gray;'>علائم فرزند خود را وارد کنید</h2>", unsafe_allow_html=True)
-    container.write("<h4 style='text-align: center; color: gray;'>True = بله , False = خیر</h4>", unsafe_allow_html=True)
-    container.write("<h4 style='text-align: center; color: gray;'>:آیا کودک شما</h4>", unsafe_allow_html=True)
+    st.write("<h1 style='text-align: center; color: blue;'>مدل تشخیص اوتیسم خفیف در کودکان</h1>", unsafe_allow_html=True)
+    st.write("<h2 style='text-align: center; color: gray;'>علائم فرزند خود را وارد کنید</h2>", unsafe_allow_html=True)
+    st.write("<h4 style='text-align: center; color: gray;'>True = بله , False = خیر</h4>", unsafe_allow_html=True)
+    st.write("<h4 style='text-align: center; color: gray;'>:آیا کودک شما</h4>", unsafe_allow_html=True)
 
     calling = (True , False)
     calling = st.selectbox('به صدازدن نام پاسخ نمی دهد؟', calling)
@@ -69,11 +68,10 @@ def show_page():
                        imagination, social, repeating, feeling, showfeeling, age]])
 
         y_prediction = model.predict(x)
-        container = st.container(border=True)
         if y_prediction == True:
-            container.write("<h4 style='text-align: center; color: gray;'>بر اساس داده های وارد شده، کودک شما به اوتیسم خفیف مبتلا می باشد</h4>", unsafe_allow_html=True)
-            container.write("<h5 style='text-align: center; color: gray;'>برای درمان فرزند خود به روانشناس مراجعه کنید</h5>", unsafe_allow_html=True)
+            st.write("<h4 style='text-align: center; color: gray;'>بر اساس داده های وارد شده، کودک شما به اوتیسم خفیف مبتلا می باشد</h4>", unsafe_allow_html=True)
+            st.write("<h5 style='text-align: center; color: gray;'>برای درمان فرزند خود به روانشناس مراجعه کنید</h5>", unsafe_allow_html=True)
         elif y_prediction == False:
-            container.write("<h4 style='text-align: center; color: gray;'>بر اساس داده های وارد شده، کودک شما در سلامتی کامل می باشد</h4>", unsafe_allow_html=True)
+            st.write("<h4 style='text-align: center; color: gray;'>بر اساس داده های وارد شده، کودک شما در سلامتی کامل می باشد</h4>", unsafe_allow_html=True)
 
 show_page()
