@@ -66,14 +66,18 @@ def show_page():
 
     button = st.button('معاینه و تشخیص')
     if button:
-        x = np.array([[calling, eye, simplegame, handy, joyshare, joyshow, recognize, otherkids,
-                       imagination, social, repeating, feeling, showfeeling, age]])
+        with st.chat_message("assistant"):
+                with st.spinner('''درحال بررسی لطفا صبور باشید'''):
+                    time.sleep(3)
+                    st.success(u'\u2713''بررسی انجام شد')
+                    x = np.array([[calling, eye, simplegame, handy, joyshare, joyshow, recognize, otherkids,
+                                   imagination, social, repeating, feeling, showfeeling, age]])
 
         y_prediction = model.predict(x)
         if y_prediction == True:
-            st.write("<h4 style='text-align: center; color: gray;'>بر اساس داده های وارد شده، کودک شما به اوتیسم خفیف مبتلا می باشد</h4>", unsafe_allow_html=True)
-            st.write("<h5 style='text-align: center; color: gray;'>برای درمان فرزند خود به روانشناس مراجعه کنید</h5>", unsafe_allow_html=True)
+            st.write("<h4 style='text-align: right; color: gray;'>بر اساس داده های وارد شده، کودک شما به اوتیسم خفیف مبتلا می باشد</h4>", unsafe_allow_html=True)
+            st.write("<h5 style='text-align: right; color: gray;'>برای درمان فرزند خود به روانشناس مراجعه کنید</h5>", unsafe_allow_html=True)
         elif y_prediction == False:
-            st.write("<h4 style='text-align: center; color: gray;'>بر اساس داده های وارد شده، کودک شما در سلامتی کامل می باشد</h4>", unsafe_allow_html=True)
+            st.write("<h4 style='text-align: right; color: gray;'>بر اساس داده های وارد شده، کودک شما در سلامتی کامل می باشد</h4>", unsafe_allow_html=True)
 
 show_page()
